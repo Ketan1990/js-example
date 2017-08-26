@@ -22,6 +22,7 @@ window.addEventListener('keydown', play);
 window.addEventListener('keyup', function(e){
 	
 	var key = document.querySelector('.key[data-key="' + e.keyCode + '"]');
+	if(!key) return;
 	key.classList.remove('playing');
 });
 
