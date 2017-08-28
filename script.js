@@ -1,5 +1,4 @@
 var play = function(e) {
-    console.log(e.keyCode);
     var audio = document.querySelector('audio[data-key="' + e.keyCode + '"]');
     var key = document.querySelector('.key[data-key="' + e.keyCode + '"]');
     if (!audio) return;
@@ -8,7 +7,7 @@ var play = function(e) {
     key.classList.add('playing');
 };
 function removeTransitionEvent(e) {
-    if (e.propertyName != 'transform') {
+    if (e.propertyName != 'height') {
         return;
     } else {
         this.classList.remove('playing');
@@ -20,3 +19,10 @@ keys.forEach(function(key) {
     key.addEventListener('transitionend', removeTransitionEvent);
 });
 window.addEventListener('keydown', play);
+window.addEventListener('keyup', function(e){
+	
+	var key = document.querySelector('.key[data-key="' + e.keyCode + '"]');
+	if(!key) return;
+	key.classList.remove('playing');
+});
+
